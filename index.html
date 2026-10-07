@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جزيرة الكلمات · Kalimat Island</title>
+<meta name="description" content="جزيرة الكلمات: لعبة ثلاثية الأبعاد يتعلّم فيها طفلك الكلام وهو يلعب. ٥٠ لعبة، ١٥ جزيرة، قرابة ٤٠٠ كلمة وكل الحروف العربية. Kalimat Island: a 3D game where your child learns to talk while playing.">
+<meta name="apple-itunes-app" content="app-id=6816729943">
+<meta name="theme-color" content="#5ec8ff">
+<meta property="og:title" content="جزيرة الكلمات · Kalimat Island">
+<meta property="og:description" content="يلعب… يضحك… ويتعلّم الكلام! Your child learns to talk while playing.">
+<meta property="og:image" content="https://kalimatisland.com/a/og.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kalimatisland.com/">
+<link rel="canonical" href="https://kalimatisland.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="a/favicon.png">
+<link rel="apple-touch-icon" href="a/apple-touch-icon.png">
+<!-- No trackers, no analytics, no outside requests: every font and picture is served from this site. -->
+<style>
+  @font-face { font-family: "Baloo"; font-weight: 800; font-display: swap;
+    src: url(fonts/baloo-bhaijaan-2-arabic-800-normal.woff2) format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; }
+  @font-face { font-family: "Baloo"; font-weight: 800; font-display: swap;
+    src: url(fonts/baloo-bhaijaan-2-latin-800-normal.woff2) format("woff2"); unicode-range: U+0000-024F; }
+  @font-face { font-family: "Plex"; font-weight: 400; font-display: swap; src: url(fonts/IBMPlexSansArabic-Regular.ttf) format("truetype"); }
+  @font-face { font-family: "Plex"; font-weight: 700; font-display: swap; src: url(fonts/IBMPlexSansArabic-Bold.ttf) format("truetype"); }
+
+  :root {
+    color-scheme: light;
+    --sky-top: #49bdfb;
+    --sky-low: #c4ecff;
+    --sea: #19a9e2;
+    --sea-deep: #0b7fc0;
+    --sand: #ffe8a6;
+    --ink: #1c2a52;
+    --ink-soft: #3c4a70;
+    --paper: #ffffff;
+    --sun: #ffc83a;
+    --sun-deep: #ff9d1c;
+    --coral: #ff5d62;
+    --grass: #45c25a;
+    --pink: #ff7cc8;
+    --blue: #3f8cff;
+    --radius: 28px;
+    --shadow: 0 10px 0 rgba(28, 42, 82, .16), 0 24px 48px rgba(28, 42, 82, .14);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--sky-low); color: var(--ink); overflow-x: hidden;
+    font-family: "Plex", "Geeza Pro", -apple-system, sans-serif; font-size: 18px; line-height: 1.7;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  html[lang="ar"] [data-l="en"], html[lang="en"] [data-l="ar"] { display: none !important; }
+
+  /* the chunky white-outlined headline of the App Store screenshots */
+  .chunky {
+    position: relative; display: inline-block; font-family: "Baloo", "Plex", sans-serif; font-weight: 800;
+    line-height: 1.12; color: transparent; letter-spacing: 0;
+    filter: drop-shadow(0 5px 0 var(--ink)) drop-shadow(0 12px 18px rgba(28, 42, 82, .25));
+  }
+  .chunky::before, .chunky::after { content: attr(data-text); position: absolute; inset: 0; }
+  .chunky::before { -webkit-text-stroke: .2em #fff; color: #fff; }
+  .chunky::after {
+    background: linear-gradient(180deg, #ffe066 0%, var(--sun) 45%, var(--sun-deep) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  }
+
+  /* --- top bar ------------------------------------------------------------------------------------------- */
+  .bar {
+    position: fixed; inset: 0 0 auto 0; z-index: 50; display: flex; align-items: center; justify-content: space-between;
+    padding: max(10px, env(safe-area-inset-top)) 16px 10px; pointer-events: none;
+  }
+  .bar > * { pointer-events: auto; }
+  .mini {
+    display: flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px; text-decoration: none;
+    background: rgba(255,255,255,.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 0 rgba(28,42,82,.12); font-family: "Baloo", sans-serif; font-weight: 800; font-size: 17px;
+    opacity: 0; transform: translateY(-12px); transition: .35s ease;
+  }
+  html[dir="rtl"] .mini { padding: 6px 6px 6px 14px; }
+  .scrolled .mini { opacity: 1; transform: none; }
+  .mini img { width: 34px; height: 34px; border-radius: 10px; }
+  .lang {
+    margin-inline-start: auto; border: 0; cursor: pointer; padding: 9px 16px; border-radius: 999px;
+    font: 700 15px "Plex", sans-serif; color: var(--ink); background: rgba(255,255,255,.9);
+    box-shadow: 0 4px 0 rgba(28,42,82,.14);
+  }
+  .lang:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(28,42,82,.14); }
+
+  /* --- hero ---------------------------------------------------------------------------------------------- */
+  .hero {
+    position: relative; min-height: 100svh; overflow: hidden; isolation: isolate;
+    background: linear-gradient(180deg, var(--sky-top) 0%, #8ad7ff 46%, var(--sky-low) 76%);
+    padding: calc(64px + env(safe-area-inset-top)) 16px 0;
+  }
+  .sun-glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; inset-inline-end: -160px; top: -180px;
+    background: radial-gradient(circle, rgba(255,247,200,.95) 0%, rgba(255,230,140,.45) 38%, transparent 70%); z-index: -2; }
+  .cloud { position: absolute; z-index: -1; opacity: .95; animation: drift linear infinite; will-change: transform; }
+  .cloud.c1 { width: 260px; top: 14%; animation-duration: 70s; }
+  .cloud.c2 { width: 170px; top: 32%; animation-duration: 95s; animation-delay: -40s; }
+  .cloud.c3 { width: 210px; top: 6%; animation-duration: 85s; animation-delay: -62s; opacity: .8; }
+  @keyframes drift { from { transform: translateX(-30vw); } to { transform: translateX(130vw); } }
+  html[dir="rtl"] .cloud { animation-name: drift-rtl; }
+  @keyframes drift-rtl { from { transform: translateX(30vw); } to { transform: translateX(-130vw); } }
+  .cloud { left: 0; }
+  html[dir="rtl"] .cloud { left: auto; right: 0; }
+
+  .hero-grid { max-width: 1180px; margin: 0 auto; display: grid; gap: 8px; align-items: center; }
+  .hero-text { text-align: center; position: relative; z-index: 3; }
+  .app-icon {
+    width: 116px; height: 116px; margin: 8px auto 14px; border-radius: 28px; border: 5px solid #fff;
+    box-shadow: 0 8px 0 rgba(28,42,82,.18), 0 18px 36px rgba(28,42,82,.22); animation: pop .9s cubic-bezier(.2,1.6,.4,1) both;
+  }
+  .hero h1 { margin: 0; font-size: clamp(64px, 15vw, 128px); }
+  .hero .en-name { font: 800 clamp(20px, 4vw, 28px) "Baloo", sans-serif; color: #fff; margin: 4px 0 10px;
+    text-shadow: 0 3px 0 rgba(28,42,82,.35); letter-spacing: .5px; }
+  .tagline {
+    display: inline-block; margin: 6px 0 18px; padding: 8px 20px; border-radius: 999px; background: var(--coral); color: #fff;
+    font: 800 clamp(19px, 4.4vw, 26px) "Baloo", sans-serif; box-shadow: 0 5px 0 #c63d42; transform: rotate(-2deg);
+  }
+  .lead { max-width: 560px; margin: 0 auto 22px; color: var(--ink); font-size: clamp(17px, 3.8vw, 20px); font-weight: 700; }
+
+  .stores { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; margin: 0 0 18px; }
+  .appstore { display: inline-block; transition: transform .2s ease; filter: drop-shadow(0 6px 0 rgba(28,42,82,.18)); }
+  .appstore:hover { transform: translateY(-3px) scale(1.03); }
+  .appstore img { height: 62px; width: auto; }
+  .soon {
+    display: inline-flex; align-items: center; gap: 10px; height: 62px; padding: 0 18px; border-radius: 14px;
+    background: rgba(255,255,255,.75); border: 2px dashed rgba(28,42,82,.28); color: var(--ink-soft);
+    font: 700 16px "Plex", sans-serif; line-height: 1.25; text-align: start;
+  }
+  .soon svg { width: 30px; height: 30px; flex: none; }
+  .soon b { display: block; font-size: 18px; color: var(--ink); }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 auto 6px; max-width: 620px; }
+  .pill {
+    padding: 6px 14px; border-radius: 999px; background: #fff; font: 800 16px "Baloo", "Plex", sans-serif; color: var(--ink);
+    box-shadow: 0 4px 0 rgba(28,42,82,.12); white-space: nowrap;
+  }
+  .pill i { font-style: normal; color: var(--coral); }
+
+  .scene { position: relative; height: clamp(300px, 62vw, 520px); z-index: 2; }
+  .scene .island { position: absolute; width: min(92%, 560px); left: 50%; bottom: 8%; transform: translateX(-50%);
+    animation: bob 5s ease-in-out infinite; }
+  .scene .kids { position: absolute; width: min(56%, 330px); left: 50%; bottom: 31%; transform: translateX(-46%);
+    animation: hop 2.6s ease-in-out infinite; transform-origin: bottom center; }
+  .float { position: absolute; animation: floaty 4.5s ease-in-out infinite; filter: drop-shadow(0 10px 10px rgba(28,42,82,.18)); }
+  .float.a { width: clamp(64px, 14vw, 110px); top: 8%; left: 6%; animation-delay: -1s; }
+  .float.b { width: clamp(64px, 14vw, 110px); top: 2%; right: 7%; animation-delay: -2.2s; }
+  .float.n { width: clamp(54px, 11vw, 92px); top: 40%; right: 2%; animation-delay: -3.1s; }
+  .float.s { width: clamp(46px, 9vw, 74px); top: 44%; left: 3%; animation-delay: -.4s; }
+  .float.balloons { width: clamp(70px, 15vw, 130px); top: -6%; left: 26%; animation-duration: 6s; }
+
+  .sea {
+    position: relative; z-index: 1; height: 120px; margin: -70px -16px 0;
+    background: url(a/sea_tile.webp) repeat-x 0 0 / auto 100%; animation: waves 30s linear infinite;
+  }
+  @keyframes waves { to { background-position: 1536px 0; } }
+  .wave-top { display: block; width: 100%; height: 60px; margin-top: -1px; }
+
+  @keyframes bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -10px); } }
+  @keyframes hop { 0%, 70%, 100% { transform: translateX(-46%) translateY(0); } 80% { transform: translateX(-46%) translateY(-18px); } 90% { transform: translateX(-46%) translateY(0) scaleY(.96); } }
+  @keyframes floaty { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-16px) rotate(6deg); } }
+  @keyframes pop { from { transform: scale(.2) rotate(-20deg); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  /* --- sections ------------------------------------------------------------------------------------------ */
+  section { position: relative; padding: 64px 16px; }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  .head { text-align: center; margin-bottom: 30px; }
+  .head h2 { margin: 0; font-size: clamp(40px, 8.4vw, 68px); }
+  .head p { margin: 10px auto 0; max-width: 620px; font-weight: 700; color: var(--ink-soft); }
+
+  .sand { background: var(--sand); }
+  .sea-bg { background: linear-gradient(180deg, #2fb8ec 0%, var(--sea-deep) 100%); color: #fff; }
+  .sea-bg .head p { color: #e3f6ff; }
+  .grass-bg { background: linear-gradient(180deg, #7bd96a 0%, #45c25a 100%); }
+  .divider { display: block; width: 100%; height: 56px; }
+
+  /* the phone with the 30-second video */
+  .watch { display: grid; gap: 28px; align-items: center; justify-items: center; }
+  .phone {
+    position: relative; width: min(78vw, 320px); aspect-ratio: 9 / 19.2; border-radius: 46px; padding: 12px;
+    background: var(--ink); box-shadow: 0 14px 0 rgba(0,0,0,.18), 0 30px 60px rgba(0,0,0,.28); transform: rotate(-3deg);
+  }
+  .phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 34px; background: #000; display: block; }
+  .phone .notch { position: absolute; top: 20px; left: 50%; width: 92px; height: 24px; transform: translateX(-50%);
+    background: var(--ink); border-radius: 0 0 16px 16px; z-index: 2; }
+  .sound {
+    position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 3; border: 0; cursor: pointer;
+    padding: 10px 18px; border-radius: 999px; background: #fff; color: var(--ink); font: 800 16px "Baloo", "Plex", sans-serif;
+    box-shadow: 0 5px 0 rgba(0,0,0,.2); white-space: nowrap;
+  }
+  .watch-text { text-align: center; max-width: 480px; }
+  .watch-text .bubble-say {
+    display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 26px; background: #fff; color: var(--ink);
+    font: 800 clamp(22px, 5vw, 30px) "Baloo", "Plex", sans-serif; box-shadow: 0 6px 0 rgba(0,0,0,.15); position: relative;
+  }
+  .watch-text .bubble-say img { width: 44px; }
+  .watch-text p { font-weight: 700; font-size: 19px; }
+
+  /* the feature cards, each with its picture climbing out of the top */
+  .cards { display: grid; column-gap: 22px; row-gap: 100px; grid-template-columns: 1fr; margin-top: 84px; }
+  .card {
+    position: relative; padding: 88px 22px 24px; border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow);
+    text-align: center; border: 4px solid #fff;
+  }
+  .card img.pic { position: absolute; height: 150px; width: auto; max-width: 180px; object-fit: contain; left: 50%; top: -76px; transform: translateX(-50%);
+    filter: drop-shadow(0 12px 10px rgba(28,42,82,.2)); transition: transform .3s cubic-bezier(.2,1.6,.4,1); }
+  .card:hover img.pic { transform: translateX(-50%) translateY(-8px) rotate(-4deg); }
+  .card h3 { margin: 0 0 6px; font: 800 clamp(24px, 5vw, 30px) "Baloo", "Plex", sans-serif; line-height: 1.2; }
+  .card p { margin: 0; color: var(--ink-soft); font-size: 17px; }
+  .card.c-blue { background: linear-gradient(180deg, #e8f3ff, #fff 60%); }
+  .card.c-pink { background: linear-gradient(180deg, #ffe9f6, #fff 60%); }
+  .card.c-sun { background: linear-gradient(180deg, #fff3cf, #fff 60%); }
+  .card.c-green { background: linear-gradient(180deg, #e6f9e3, #fff 60%); }
+  .card.c-coral { background: linear-gradient(180deg, #ffe7e6, #fff 60%); }
+  .card.c-sky { background: linear-gradient(180deg, #e1f6ff, #fff 60%); }
+
+  /* the screenshots */
+  .shots { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 16px 26px; margin: 0 -16px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .shots::-webkit-scrollbar { display: none; }
+  .shots img { flex: none; width: min(86vw, 760px); height: auto; aspect-ratio: 1434 / 660; border-radius: 22px; scroll-snap-align: center;
+    border: 5px solid #fff; box-shadow: var(--shadow); background: #bfe9ff; }
+  .hint { text-align: center; font-weight: 700; color: var(--ink-soft); font-size: 15px; margin-top: -8px; }
+
+  /* safe for children */
+  .safe { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; margin: 0 auto; }
+  .safe div { background: rgba(255,255,255,.92); border-radius: 22px; padding: 16px 14px; text-align: center; font-weight: 700;
+    box-shadow: 0 5px 0 rgba(28,42,82,.12); }
+  .safe b { display: block; font: 800 22px "Baloo", "Plex", sans-serif; color: var(--ink); }
+  .safe span { color: var(--ink-soft); font-size: 15px; }
+  .safe .ico { font-size: 30px; line-height: 1; display: block; margin-bottom: 4px; }
+
+  /* the doctor's note */
+  .note { max-width: 760px; margin: 0 auto; position: relative; background: #fff; border-radius: 32px; padding: 30px 26px 30px;
+    box-shadow: var(--shadow); text-align: center; }
+  .note .peek { position: absolute; width: 150px; top: -96px; inset-inline-end: 24px; }
+  .note h3 { margin: 0 0 8px; font: 800 clamp(26px, 5.5vw, 36px) "Baloo", "Plex", sans-serif; }
+  .note p { margin: 0; font-size: 18px; color: var(--ink-soft); font-weight: 700; }
+
+  /* the last call */
+  .final { text-align: center; padding-bottom: 40px; }
+  .final .kids2 { width: min(64vw, 300px); margin: 0 auto -6px; animation: hop2 3s ease-in-out infinite; }
+  @keyframes hop2 { 0%, 70%, 100% { transform: translateY(0); } 82% { transform: translateY(-16px); } }
+  .qr { display: none; margin: 18px auto 0; width: 210px; padding: 12px; background: #fff; border-radius: 24px; box-shadow: var(--shadow); }
+  .qr img { border-radius: 12px; }
+  .qr p { margin: 8px 0 0; font-weight: 700; font-size: 15px; color: var(--ink-soft); }
+  .desktop .qr { display: block; }
+  .android-note { display: none; max-width: 520px; margin: 0 auto 14px; padding: 12px 16px; border-radius: 18px;
+    background: #fff7d6; border: 2px solid #ffd76a; font-weight: 700; color: var(--ink); }
+  .android .android-note { display: block; }
+
+  footer { background: var(--ink); color: #c9d4f1; text-align: center; padding: 34px 16px calc(34px + env(safe-area-inset-bottom)); font-size: 15px; }
+  footer a { color: #fff; font-weight: 700; margin: 0 10px; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.3); }
+  footer .made { margin-top: 10px; color: #8f9cc4; }
+
+  /* the entrances */
+  .reveal { opacity: 0; transform: translateY(28px) scale(.98); transition: opacity .7s ease, transform .7s cubic-bezier(.2,1.3,.4,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .hero-text > * { animation: rise .8s cubic-bezier(.2,1.3,.4,1) both; }
+  .hero-text > :nth-child(2) { animation-delay: .12s; } .hero-text > :nth-child(3) { animation-delay: .22s; }
+  .hero-text > :nth-child(4) { animation-delay: .32s; } .hero-text > :nth-child(5) { animation-delay: .42s; }
+  .hero-text > :nth-child(6) { animation-delay: .52s; } .hero-text > :nth-child(7) { animation-delay: .62s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  .hero-text > .tagline { animation-name: rise-tilt; }
+  @keyframes rise-tilt { from { opacity: 0; transform: translateY(26px) rotate(-2deg); } to { opacity: 1; transform: rotate(-2deg); } }
+
+  @media (min-width: 720px) {
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 96px; }
+    .safe { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (min-width: 980px) {
+    .hero-grid { grid-template-columns: 1.05fr 1fr; min-height: calc(100svh - 120px); padding-bottom: 56px; }
+    .hero-text { text-align: start; }
+    html[dir="rtl"] .hero-text { text-align: right; }
+    .lead { margin-inline: 0; }
+    .stores, .pills { justify-content: flex-start; }
+    .app-icon { margin-inline: 0; }
+    .scene { height: 560px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .watch { grid-template-columns: auto 1fr; justify-items: start; }
+    html[dir="rtl"] .watch-text { text-align: right; }
+    html[dir="ltr"] .watch-text { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar">
+  <a class="mini" href="#top"><img src="a/icon.webp" alt=""><span data-l="ar">جزيرة الكلمات</span><span data-l="en">Kalimat Island</span></a>
+  <button class="lang" id="lang" type="button"><span data-l="ar">English</span><span data-l="en">العربية</span></button>
+</div>
+
+<header class="hero" id="top">
+  <div class="sun-glow"></div>
+  <img class="cloud c1" src="a/cloud_a.webp" alt="">
+  <img class="cloud c2" src="a/cloud_b.webp" alt="">
+  <img class="cloud c3" src="a/cloud_a.webp" alt="">
+
+  <div class="hero-grid">
+    <div class="hero-text">
+      <img class="app-icon" src="a/icon.webp" alt="أيقونة جزيرة الكلمات · Kalimat Island icon" width="116" height="116">
+      <h1>
+        <span class="chunky" data-l="ar" data-text="جزيرة الكلمات">جزيرة الكلمات</span>
+        <span class="chunky" data-l="en" data-text="Kalimat Island">Kalimat Island</span>
+      </h1>
+      <div class="en-name"><span data-l="ar">Kalimat Island</span><span data-l="en">جزيرة الكلمات · Arabic Words</span></div>
+      <div class="tagline"><span data-l="ar">يلعب… يضحك… ويتعلّم الكلام!</span><span data-l="en">Play, laugh… and learn to talk!</span></div>
+      <p class="lead">
+        <span data-l="ar">لعبة ثلاثية الأبعاد يبني فيها طفلك بطلاً يشبهه، ويبحر من جزيرة إلى جزيرة، ويقول كلماته الأولى بالعربية… واللعبة تسمعه!</span>
+        <span data-l="en">A 3D game where your child builds a hero who looks like them, sails from island to island, and says their first Arabic words out loud… and the game hears them!</span>
+      </p>
+      <div class="stores">
+        <a class="appstore" href="https://apps.apple.com/us/app/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9-%D8%A7%D9%84%D9%83%D9%84%D9%85%D8%A7%D8%AA/id6816729943" rel="noopener">
+          <img data-l="ar" src="a/appstore_ar.svg" alt="حمّلها من App Store">
+          <img data-l="en" src="a/appstore_en.svg" alt="Download on the App Store">
+        </a>
+        <div class="soon" aria-label="Google Play">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#34a853" d="M7 4.5 26.6 24 7 43.5c-.6-.3-1-1-1-1.8V6.3c0-.8.4-1.5 1-1.8z"/><path fill="#fbbc04" d="m33.3 30.7-6.7-6.7 6.7-6.7 7.6 4.3c2 1.2 2 3.6 0 4.8z"/><path fill="#ea4335" d="M26.6 24 7 43.5c.5.3 1.2.3 1.9-.1l24.4-12.7z"/><path fill="#4285f4" d="M26.6 24 33.3 17.3 8.9 4.6C8.2 4.2 7.5 4.2 7 4.5z"/></svg>
+          <span><span data-l="ar"><b>قريباً</b>على Google Play</span><span data-l="en"><b>Coming soon</b>on Google Play</span></span>
+        </div>
+      </div>
+      <div class="pills">
+        <span class="pill" data-l="ar"><i>٥٠</i> لعبة</span><span class="pill" data-l="en"><i>50</i> games</span>
+        <span class="pill" data-l="ar"><i>١٥</i> جزيرة</span><span class="pill" data-l="en"><i>15</i> islands</span>
+        <span class="pill" data-l="ar"><i>٤٠٠</i> كلمة تقريباً</span><span class="pill" data-l="en"><i>~400</i> words</span>
+        <span class="pill" data-l="ar">كل <i>الحروف</i></span><span class="pill" data-l="en">every <i>letter</i></span>
+      </div>
+    </div>
+
+    <div class="scene" aria-hidden="true">
+      <img class="float balloons" src="a/balloons.webp" alt="">
+      <img class="float a" src="a/block_a.webp" alt="">
+      <img class="float b" src="a/block_baa.webp" alt="">
+      <img class="float n" src="a/block_3.webp" alt="">
+      <img class="float s" src="a/star.webp" alt="">
+      <img class="island" src="a/island_palm.webp" alt="">
+      <img class="kids" src="a/kids_pair_wave.webp" alt="">
+    </div>
+  </div>
+  <div class="sea" aria-hidden="true"></div>
+</header>
+
+<main>
+  <!-- watch it -->
+  <section class="sea-bg" id="watch">
+    <div class="wrap watch">
+      <div class="phone reveal">
+        <div class="notch"></div>
+        <video id="promo" src="a/promo.mp4" poster="a/promo_poster.jpg" muted loop playsinline preload="none"></video>
+        <button class="sound" id="sound" type="button"><span data-l="ar">🔊 شغّل الصوت</span><span data-l="en">🔊 Sound on</span></button>
+      </div>
+      <div class="watch-text reveal">
+        <div class="bubble-say"><img src="a/mic.webp" alt=""><span data-l="ar">قُلْ: كلب!</span><span data-l="en">Say: «كلب»!</span></div>
+        <h2 class="head" style="margin:22px 0 0;text-align:inherit">
+          <span class="chunky" data-l="ar" data-text="يقولها… واللعبة تسمعه!" style="font-size:clamp(36px,7.6vw,58px)">يقولها… واللعبة تسمعه!</span>
+          <span class="chunky" data-l="en" data-text="They say it… the game hears!" style="font-size:clamp(34px,7vw,54px)">They say it… the game hears!</span>
+        </h2>
+        <p>
+          <span data-l="ar">في كل مستوى تسأل رانيا عن كلمة، فيجدها طفلك ثم ينطقها بصوته. التعرّف على الكلام يتمّ على الجهاز نفسه، وصوته لا يخرج منه أبداً.</span>
+          <span data-l="en">In every level Rania asks for a word: your child finds it, then says it aloud. Speech is recognised on the device itself, and their voice never leaves it.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <svg class="divider" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" style="background:#0b7fc0"><path fill="#ffe8a6" d="M0 28c160 22 320 22 480 0s320-22 480 0 320 22 480 0v28H0z"/></svg>
+
+  <!-- what's inside -->
+  <section class="sand" id="inside">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2><span class="chunky" data-l="ar" data-text="ماذا في الجزيرة؟">ماذا في الجزيرة؟</span><span class="chunky" data-l="en" data-text="What's on the island?">What's on the island?</span></h2>
+        <p><span data-l="ar">كل مستوى لعبة جديدة، ومستويات قصيرة تناسب أعمار ٣ إلى ٦ سنوات.</span><span data-l="en">Every level is a new game, with short levels made for ages 3 to 6.</span></p>
+      </div>
+      <div class="cards">
+        <article class="card c-blue reveal"><img class="pic" src="a/ball.webp" alt="">
+          <h3><span data-l="ar">٥٠ لعبة ثلاثية الأبعاد</span><span data-l="en">50 games in 3D</span></h3>
+          <p><span data-l="ar">سباق، كرة سلة، صيد سمك، بيتزا، غوص، صاروخ… وكل لعبة تعلّم كلمات جديدة.</span><span data-l="en">Racing, basketball, fishing, pizza, diving, rockets… and every game teaches new words.</span></p></article>
+        <article class="card c-pink reveal"><img class="pic" src="a/girl_point_up.webp" alt="">
+          <h3><span data-l="ar">بطل يشبهه تماماً</span><span data-l="en">A hero who looks like them</span></h3>
+          <p><span data-l="ar">ولد أو بنت، لون البشرة والشعر والوجه، وخزانة كاملة يشتري منها بالعملات التي يجمعها.</span><span data-l="en">Boy or girl, skin, hair and face, plus a whole wardrobe bought with the coins they win.</span></p></article>
+        <article class="card c-sun reveal"><img class="pic" src="a/block_baa.webp" alt="">
+          <h3><span data-l="ar">أرقام وحروف عربية… وABC</span><span data-l="en">Numbers, Arabic letters… and ABC</span></h3>
+          <p><span data-l="ar">كل الحروف العربية برسمها خطوة بخطوة بالإصبع، والأرقام، وحروف الإنجليزية.</span><span data-l="en">Every Arabic letter, traced step by step with a finger, plus numbers and the English alphabet.</span></p></article>
+        <article class="card c-green reveal"><img class="pic" src="a/girl_magnify.webp" alt="">
+          <h3><span data-l="ar">ركن الوالدين</span><span data-l="en">The Parent Corner</span></h3>
+          <p><span data-l="ar">اسمع تسجيلات صوته لكل كلمة، وتابع تقدّمه يوماً بيوم وجزيرة بجزيرة.</span><span data-l="en">Hear their recordings for every word, and follow their progress day by day, island by island.</span></p></article>
+        <article class="card c-coral reveal"><img class="pic" src="a/bubble.webp" alt="">
+          <h3><span data-l="ar">فصحى أو سعودي</span><span data-l="en">Fusha or Saudi</span></h3>
+          <p><span data-l="ar">صوت رانيا بالعربية الفصحى، أو باللهجة السعودية كما في البيت. أنتم تختارون.</span><span data-l="en">Rania speaks Modern Standard Arabic, or the Saudi dialect of home. You choose.</span></p></article>
+        <article class="card c-sky reveal"><img class="pic" src="a/trophy.webp" alt="">
+          <h3><span data-l="ar">نجوم وأوسمة وطريق الأبطال</span><span data-l="en">Stars, badges and the Champion Path</span></h3>
+          <p><span data-l="ar">ألبوم ملصقات يمتلئ، وأوسمة لكل إنجاز، وطريق ذهبي لكل جزيرة يكملها.</span><span data-l="en">A sticker album that fills up, badges for every step, and a golden path for every island finished.</span></p></article>
+      </div>
+    </div>
+  </section>
+  <svg class="divider" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" style="background:#ffe8a6"><path fill="#c4ecff" d="M0 28c160 22 320 22 480 0s320-22 480 0 320 22 480 0v28H0z"/></svg>
+
+  <!-- screenshots -->
+  <section id="shots" style="background:var(--sky-low)">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2><span class="chunky" data-l="ar" data-text="جولة في اللعبة">جولة في اللعبة</span><span class="chunky" data-l="en" data-text="Take a look">Take a look</span></h2>
+      </div>
+      <div class="shots" id="shotsAr" data-l="ar">
+        <img src="a/shot_ar_1.webp" alt="" loading="lazy"><img src="a/shot_ar_2.webp" alt="" loading="lazy"><img src="a/shot_ar_3.webp" alt="" loading="lazy"><img src="a/shot_ar_4.webp" alt="" loading="lazy">
+        <img src="a/shot_ar_5.webp" alt="" loading="lazy"><img src="a/shot_ar_6.webp" alt="" loading="lazy"><img src="a/shot_ar_7.webp" alt="" loading="lazy"><img src="a/shot_ar_8.webp" alt="" loading="lazy">
+      </div>
+      <div class="shots" id="shotsEn" data-l="en">
+        <img src="a/shot_en_1.webp" alt="" loading="lazy"><img src="a/shot_en_2.webp" alt="" loading="lazy"><img src="a/shot_en_3.webp" alt="" loading="lazy"><img src="a/shot_en_4.webp" alt="" loading="lazy">
+        <img src="a/shot_en_5.webp" alt="" loading="lazy"><img src="a/shot_en_6.webp" alt="" loading="lazy"><img src="a/shot_en_7.webp" alt="" loading="lazy"><img src="a/shot_en_8.webp" alt="" loading="lazy">
+      </div>
+      <p class="hint"><span data-l="ar">اسحب لترى المزيد ←</span><span data-l="en">Swipe to see more →</span></p>
+    </div>
+  </section>
+
+  <!-- safe for children -->
+  <section class="grass-bg" id="safe">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2><span class="chunky" data-l="ar" data-text="آمنة لطفلك">آمنة لطفلك</span><span class="chunky" data-l="en" data-text="Safe for your child">Safe for your child</span></h2>
+      </div>
+      <div class="safe reveal">
+        <div><span class="ico">🚫</span><b data-l="ar">بلا إعلانات</b><b data-l="en">No ads</b><span data-l="ar">لا إعلان واحد</span><span data-l="en">Not a single one</span></div>
+        <div><span class="ico">🔒</span><b data-l="ar">لا نجمع بيانات</b><b data-l="en">No data collected</b><span data-l="ar">كل شيء يبقى على جهازك</span><span data-l="en">Everything stays on your device</span></div>
+        <div><span class="ico">✈️</span><b data-l="ar">تعمل بلا إنترنت</b><b data-l="en">Plays offline</b><span data-l="ar">في السيارة والطائرة</span><span data-l="en">In the car, on the plane</span></div>
+        <div><span class="ico">👨‍👩‍👧</span><b data-l="ar">سؤال للكبار</b><b data-l="en">Grown-ups only</b><span data-l="ar">قبل الإعدادات وركن الوالدين</span><span data-l="en">Before settings and the Parent Corner</span></div>
+      </div>
+    </div>
+  </section>
+  <svg class="divider" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" style="background:#45c25a"><path fill="#c4ecff" d="M0 28c160 22 320 22 480 0s320-22 480 0 320 22 480 0v28H0z"/></svg>
+
+  <!-- the story -->
+  <section style="background:var(--sky-low);padding-top:110px">
+    <div class="note reveal">
+      <img class="peek" src="a/boy_peek.webp" alt="">
+      <h3><span data-l="ar">صنعها طبيب أطفال… لابنه أولاً</span><span data-l="en">Made by a children's doctor… for his son first</span></h3>
+      <p>
+        <span data-l="ar">صمّم «جزيرة الكلمات» طبيب أطفال وحديثي الولادة ليساعد ابنه على أولى كلماته، ثم جعلها لكل طفل: لعب حقيقي ممتع، ومستويات قصيرة، وتعلّم يأتي من تلقاء نفسه.</span>
+        <span data-l="en">Kalimat Island was designed by a paediatric and newborn-intensive-care doctor to help his own son with his first words, then made for every child: real, joyful play, short levels, and learning that comes on its own.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- get it -->
+  <section class="final" id="get" style="background:linear-gradient(180deg,var(--sky-low),#8ad7ff)">
+    <img class="kids2" src="a/kids_pair_wave.webp" alt="">
+    <h2 style="margin:0 0 12px"><span class="chunky" data-l="ar" data-text="حمّلها الآن!" style="font-size:clamp(52px,12vw,92px)">حمّلها الآن!</span><span class="chunky" data-l="en" data-text="Get it now!" style="font-size:clamp(52px,12vw,92px)">Get it now!</span></h2>
+    <p class="lead"><span data-l="ar">الجزيرة الأولى مجانية، وتفتح كل الجزر بشراء واحد لمرة واحدة، بلا اشتراك.</span><span data-l="en">The first island is free. One single purchase opens every island, with no subscription.</span></p>
+    <p class="android-note"><span data-l="ar">نسخة أندرويد قادمة قريباً على Google Play 💚</span><span data-l="en">The Android version is coming soon to Google Play 💚</span></p>
+    <div class="stores">
+      <a class="appstore" href="https://apps.apple.com/us/app/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9-%D8%A7%D9%84%D9%83%D9%84%D9%85%D8%A7%D8%AA/id6816729943" rel="noopener">
+        <img data-l="ar" src="a/appstore_ar.svg" alt="حمّلها من App Store">
+        <img data-l="en" src="a/appstore_en.svg" alt="Download on the App Store">
+      </a>
+      <div class="soon"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#34a853" d="M7 4.5 26.6 24 7 43.5c-.6-.3-1-1-1-1.8V6.3c0-.8.4-1.5 1-1.8z"/><path fill="#fbbc04" d="m33.3 30.7-6.7-6.7 6.7-6.7 7.6 4.3c2 1.2 2 3.6 0 4.8z"/><path fill="#ea4335" d="M26.6 24 7 43.5c.5.3 1.2.3 1.9-.1l24.4-12.7z"/><path fill="#4285f4" d="M26.6 24 33.3 17.3 8.9 4.6C8.2 4.2 7.5 4.2 7 4.5z"/></svg>
+        <span><span data-l="ar"><b>قريباً</b>على Google Play</span><span data-l="en"><b>Coming soon</b>on Google Play</span></span></div>
+    </div>
+    <div class="qr"><img src="a/qr.png" alt="QR" width="186" height="186"><p data-l="ar">امسح الرمز بكاميرا جوالك</p><p data-l="en">Scan with your phone's camera</p></div>
+  </section>
+</main>
+
+<footer>
+  <div>
+    <a href="support/"><span data-l="ar">الدعم</span><span data-l="en">Support</span></a>
+    <a href="privacy/"><span data-l="ar">سياسة الخصوصية</span><span data-l="en">Privacy Policy</span></a>
+    <a href="mailto:xfanezz.developer@gmail.com"><span data-l="ar">تواصل معنا</span><span data-l="en">Contact</span></a>
+  </div>
+  <div class="made">© 2026 Mohammed Faqihi · <span data-l="ar">جزيرة الكلمات</span><span data-l="en">Kalimat Island</span></div>
+  <div class="made" style="font-size:12px">Apple, the Apple logo and App Store are trademarks of Apple Inc. Google Play is a trademark of Google LLC.</div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setLang(l) {
+    root.lang = l; root.dir = l === "ar" ? "rtl" : "ltr";
+    document.title = l === "ar" ? "جزيرة الكلمات · Kalimat Island" : "Kalimat Island · جزيرة الكلمات";
+    try { localStorage.setItem("lang", l); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (e) {}
+  var q = (location.search.match(/[?&]lang=(ar|en)/) || [])[1];
+  setLang(q || saved || ((navigator.language || "ar").toLowerCase().indexOf("ar") === 0 ? "ar" : "en"));
+  document.getElementById("lang").addEventListener("click", function () { setLang(root.lang === "ar" ? "en" : "ar"); });
+
+  var ua = navigator.userAgent || "";
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(ua);
+  root.classList.add(ios ? "ios" : android ? "android" : "desktop");
+  if (android) document.body.classList.add("android");
+  if (!ios && !android) document.body.classList.add("desktop");
+
+  var bar = document.getElementById("bar");
+  function onScroll() { bar.classList.toggle("scrolled", window.scrollY > window.innerHeight * 0.6); }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  var video = document.getElementById("promo");
+  var sound = document.getElementById("sound");
+  sound.addEventListener("click", function () {
+    video.muted = !video.muted;
+    if (!video.muted) { video.currentTime = 0; video.play(); }
+    sound.innerHTML = video.muted
+      ? '<span data-l="ar">🔊 شغّل الصوت</span><span data-l="en">🔊 Sound on</span>'
+      : '<span data-l="ar">🔇 اكتم الصوت</span><span data-l="en">🔇 Mute</span>';
+  });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+    var vo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { video.preload = "auto"; var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+        else { video.pause(); }
+      });
+    }, { threshold: 0.4 });
+    vo.observe(video);
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
