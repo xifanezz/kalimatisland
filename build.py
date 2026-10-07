@@ -136,6 +136,14 @@ def main():
     sm.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(sm) + "\n")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+    # the support and privacy pages (copied from the game's docs/store) each name themselves as the one address, so
+    # the two policies (App Store and Google Play) are never folded into one as duplicates
+    for sub in ("support", "privacy", "privacy/android"):
+        page = ROOT / sub / "index.html"
+        html = page.read_text()
+        if 'rel="canonical"' not in html:
+            html = html.replace("</head>", f'<link rel="canonical" href="{SITE}/{sub}/">\n</head>', 1)
+            page.write_text(html)
     print("built: index.html, en/index.html, sitemap.xml, robots.txt")
 
 
