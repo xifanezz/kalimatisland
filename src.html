@@ -277,6 +277,11 @@
   footer { background: var(--ink); color: #c9d4f1; text-align: center; padding: 34px 16px calc(34px + env(safe-area-inset-bottom)); font-size: 15px; }
   footer a { color: #fff; font-weight: 700; margin: 0 10px; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.3); }
   footer .made { margin-top: 10px; color: #8f9cc4; }
+  footer .social { display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 22px; }
+  footer .social span.t { color: #c9d4f1; font-weight: 700; }
+  footer .social a { display: inline-grid; place-items: center; width: 46px; height: 46px; margin: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.1); transition: transform .15s, background .15s; }
+  footer .social a:hover { transform: translateY(-2px); background: rgba(255,255,255,.2); }
+  footer .social svg { width: 24px; height: 24px; fill: #fff; }
 
   /* the entrances */
   .reveal { opacity: 0; transform: translateY(28px) scale(.98); transition: opacity .7s ease, transform .7s cubic-bezier(.2,1.3,.4,1); }
@@ -601,6 +606,11 @@
 </main>
 
 <footer>
+  <div class="social">
+    <span class="t"><span data-l="ar">تابعنا</span><span data-l="en">Follow us</span></span>
+    <a href="https://www.tiktok.com/@babbleisland" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.3 6.3 0 1 0 5.3 6.2V8.6a7.9 7.9 0 0 0 4.4 1.3V6.6a4.5 4.5 0 0 1-4.4-4.6z"/></svg></a>
+    <a href="https://www.youtube.com/@kalimatisland" target="_blank" rel="noopener me" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z"/></svg></a>
+  </div>
   <div>
     <a href="support/"><span data-l="ar">الدعم</span><span data-l="en">Support</span></a>
     <a href="privacy/"><span data-l="ar">سياسة الخصوصية</span><span data-l="en">Privacy Policy</span></a>

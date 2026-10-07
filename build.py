@@ -91,7 +91,7 @@ def build(lang: str) -> str:
          "downloadUrl": APP, "installUrl": APP, "publisher": {"@id": SITE + "/#org"}},
         {"@type": "Organization", "@id": SITE + "/#org", "name": "Kalimat Island", "alternateName": "جزيرة الكلمات",
          "url": SITE + "/", "logo": SITE + "/a/logo.png", "email": "xfanezz.developer@gmail.com",
-         "sameAs": [APP]},
+         "sameAs": [APP, "https://www.tiktok.com/@babbleisland", "https://www.youtube.com/@kalimatisland"]},
         {"@type": "WebSite", "@id": SITE + "/#site", "name": "جزيرة الكلمات · Kalimat Island", "url": SITE + "/",
          "inLanguage": lang, "publisher": {"@id": SITE + "/#org"}},
         {"@type": "FAQPage", "@id": SITE + m["path"] + "#faq", "inLanguage": lang, "mainEntity": faq},
