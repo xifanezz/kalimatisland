@@ -20,6 +20,13 @@ ROOT = pathlib.Path(__file__).resolve().parent
 SITE = "https://kalimatisland.com"
 APP = "https://apps.apple.com/app/id6816729943"
 TODAY = "2026-10-07"
+# Visitor stats (our Umami at stats.naqla.net: no cookies, no IP addresses kept), right before </head> on the two
+# landing pages only (the privacy and support pages promise no scripts). Keep it exactly this string: the server's nginx adds it only to pages that don't have it yet.
+STATS = '<script defer src="https://stats.naqla.net/s.js" data-website-id="d943244c-76b1-44ad-a071-edc61ceb66a0"></script>'
+
+
+def with_stats(html):
+    return html if STATS in html else html.replace("</head>", STATS + "</head>", 1)
 
 META = {
     "ar": {
@@ -119,7 +126,7 @@ def build(lang: str) -> str:
     else:
         out = out.replace("""'<span data-l="ar">🔊 شغّل الصوت</span><span data-l="en">🔊 Sound on</span>'""", "'🔊 Sound on'")
         out = out.replace("""'<span data-l="ar">🔇 اكتم الصوت</span><span data-l="en">🔇 Mute</span>'""", "'🔇 Mute'")
-    return "<!doctype html>\n" + out.replace("<!DOCTYPE html>", "").lstrip()
+    return with_stats("<!doctype html>\n" + out.replace("<!DOCTYPE html>", "").lstrip())
 
 
 def main():
