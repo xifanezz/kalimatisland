@@ -128,6 +128,7 @@
   .appstore { display: inline-block; transition: transform .2s ease; filter: drop-shadow(0 6px 0 rgba(28,42,82,.18)); }
   .appstore:hover { transform: translateY(-3px) scale(1.03); }
   .appstore img { height: 62px; width: auto; }
+.android .stores .googleplay { order: -1; }
   .soon {
     display: inline-flex; align-items: center; gap: 10px; height: 62px; padding: 0 18px; border-radius: 14px;
     background: rgba(255,255,255,.75); border: 2px dashed rgba(28,42,82,.28); color: var(--ink-soft);
@@ -314,8 +315,22 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
   }
+  /* the two islands: Arabic (Kalimat) and English (Babble) */
+  #two { padding: 56px 16px 64px; background: linear-gradient(180deg, #ffffff, var(--sky-low)); text-align: center; }
+  .two-title { margin: 0 0 10px; }
+  .twins { display: grid; gap: 22px; grid-template-columns: 1fr; max-width: 860px; margin: 26px auto 0; }
+  @media (min-width: 720px) { .twins { grid-template-columns: 1fr 1fr; } }
+  .twin { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 28px 22px 26px; border-radius: var(--radius);
+    background: var(--paper); box-shadow: var(--shadow); text-decoration: none; color: var(--ink); transition: transform .2s ease; }
+  a.twin:hover { transform: translateY(-4px); }
+  .twin img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 6px 0 rgba(28,42,82,.14); }
+  .twin h3 { margin: 6px 0 0; font: 800 clamp(26px, 5vw, 32px) "Baloo", "Plex", sans-serif; line-height: 1.2; }
+  .twin h3 small { display: block; font: 700 15px "Plex", sans-serif; color: var(--ink-soft); margin-top: 4px; }
+  .twin p { margin: 0; color: var(--ink-soft); font-size: 17px; }
+  .twin .pill { margin-top: 8px; padding: 10px 24px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 700; }
+  .twin.babble .pill { background: var(--coral); }
 </style>
-<meta content="جزيرة الكلمات لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد: ٥٠ لعبة في ١٥ جزيرة يتعلّم فيها طفلك الكلام والنطق والحروف والأرقام والألوان وهو يلعب. للأطفال من ٣ إلى ٦ سنوات، بلا إعلانات، وتعمل بلا إنترنت." name="description"/><meta content="لعبة تعليمية للأطفال، ألعاب أطفال، تعليم الكلام للأطفال، تعليم النطق، تأخر الكلام عند الأطفال، تعليم الحروف العربية، تعليم الأرقام للأطفال، تعليم الألوان، ألعاب أطفال بدون إنترنت، لعبة أطفال ٣ سنوات، لعبة أطفال ٤ سنوات، العاب تعليمية عربية، جزيرة الكلمات" name="keywords"/><meta content="جزيرة الكلمات: يلعب… يضحك… ويتعلّم الكلام!" property="og:title"/><meta content="جزيرة الكلمات لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد: ٥٠ لعبة في ١٥ جزيرة يتعلّم فيها طفلك الكلام والنطق والحروف والأرقام والألوان وهو يلعب. للأطفال من ٣ إلى ٦ سنوات، بلا إعلانات، وتعمل بلا إنترنت." property="og:description"/><meta content="https://kalimatisland.com/" property="og:url"/><meta content="ar_AR" property="og:locale"/><meta content="جزيرة الكلمات · Kalimat Island" property="og:site_name"/><link href="https://kalimatisland.com/" rel="canonical"/><link href="https://kalimatisland.com/" hreflang="ar" rel="alternate"/><link href="https://kalimatisland.com/en/" hreflang="en" rel="alternate"/><link href="https://kalimatisland.com/" hreflang="x-default" rel="alternate"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MobileApplication","@id":"https://kalimatisland.com/#app","name":"جزيرة الكلمات","alternateName":["Kalimat Island","جزيرة الكلمات","Kalimat Island: Arabic Words"],"description":"جزيرة الكلمات لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد: ٥٠ لعبة في ١٥ جزيرة يتعلّم فيها طفلك الكلام والنطق والحروف والأرقام والألوان وهو يلعب. للأطفال من ٣ إلى ٦ سنوات، بلا إعلانات، وتعمل بلا إنترنت.","url":"https://kalimatisland.com/","image":"https://kalimatisland.com/a/og.jpg","screenshot":["https://kalimatisland.com/a/shot_ar_1.webp","https://kalimatisland.com/a/shot_ar_2.webp","https://kalimatisland.com/a/shot_ar_3.webp","https://kalimatisland.com/a/shot_ar_4.webp","https://kalimatisland.com/a/shot_ar_5.webp","https://kalimatisland.com/a/shot_ar_6.webp","https://kalimatisland.com/a/shot_ar_7.webp","https://kalimatisland.com/a/shot_ar_8.webp"],"operatingSystem":"iOS, iPadOS","applicationCategory":"EducationalApplication","applicationSubCategory":"Kids learning game","inLanguage":["ar","en"],"contentRating":"4+","isFamilyFriendly":true,"audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":6},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","category":"free with a one-time in-app purchase"},"downloadUrl":"https://apps.apple.com/app/id6816729943","installUrl":"https://apps.apple.com/app/id6816729943","publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"Organization","@id":"https://kalimatisland.com/#org","name":"Kalimat Island","alternateName":"جزيرة الكلمات","url":"https://kalimatisland.com/","logo":"https://kalimatisland.com/a/logo.png","email":"xfanezz.developer@gmail.com","sameAs":["https://apps.apple.com/app/id6816729943","https://www.tiktok.com/@babbleisland","https://www.youtube.com/@kalimatisland"]},{"@type":"WebSite","@id":"https://kalimatisland.com/#site","name":"جزيرة الكلمات · Kalimat Island","url":"https://kalimatisland.com/","inLanguage":"ar","publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"FAQPage","@id":"https://kalimatisland.com/#faq","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"ما هي لعبة جزيرة الكلمات؟","acceptedAnswer":{"@type":"Answer","text":"لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد، فيها ٥٠ لعبة في ١٥ جزيرة. يبحث الطفل عن الكلمة ثم ينطقها بصوته، فيتعلّم قرابة ٤٠٠ كلمة من حياته اليومية، وكل الحروف العربية والأرقام، وهو يلعب."}},{"@type":"Question","name":"لأي عمر تناسب اللعبة؟","acceptedAnswer":{"@type":"Answer","text":"صُمّمت للأطفال من ٣ إلى ٦ سنوات، بمستويات قصيرة تناسب انتباه الطفل الصغير، وتتكيّف الصعوبة مع مستوى طفلك."}},{"@type":"Question","name":"هل تساعد اللعبة الطفل على الكلام والنطق؟","acceptedAnswer":{"@type":"Answer","text":"في كل مستوى يُطلب من الطفل أن يقول الكلمة بصوته، والتعرّف على الكلام يتمّ على الجهاز نفسه. تشجّع اللعبة الطفل على النطق بالتكرار والمرح، ويسمع الوالدان تسجيلاته في ركن الوالدين. وهي لعبة تعليمية، وليست بديلاً عن أخصائي التخاطب."}},{"@type":"Question","name":"هل جزيرة الكلمات مجانية؟","acceptedAnswer":{"@type":"Answer","text":"التحميل مجاني والجزيرة الأولى مجانية. وتفتح كل الجزر بشراء واحد لمرة واحدة، بلا اشتراك شهري."}},{"@type":"Question","name":"هل تعمل اللعبة بدون إنترنت؟","acceptedAnswer":{"@type":"Answer","text":"نعم، تعمل بالكامل بدون إنترنت بعد التحميل، فتناسب السيارة والطائرة. ولا يُحتاج الإنترنت إلا للشراء."}},{"@type":"Question","name":"هل في اللعبة إعلانات؟","acceptedAnswer":{"@type":"Answer","text":"لا، لا توجد أي إعلانات، ولا نجمع أي بيانات عن طفلك."}},{"@type":"Question","name":"هل اللغة فصحى أم لهجة؟","acceptedAnswer":{"@type":"Answer","text":"يختار الوالدان صوت رانيا: العربية الفصحى، أو اللهجة السعودية كما يتكلّمها الطفل في البيت."}},{"@type":"Question","name":"هل اللعبة متوفرة على أندرويد؟","acceptedAnswer":{"@type":"Answer","text":"متوفرة الآن على الآيفون والآيباد من App Store، ونسخة أندرويد قادمة قريباً على Google Play."}}]}]}</script></head>
+<meta content="جزيرة الكلمات لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد: ٥٠ لعبة في ١٥ جزيرة يتعلّم فيها طفلك الكلام والنطق والحروف والأرقام والألوان وهو يلعب. للأطفال من ٣ إلى ٦ سنوات، بلا إعلانات، وتعمل بلا إنترنت." name="description"/><meta content="لعبة تعليمية للأطفال، ألعاب أطفال، تعليم الكلام للأطفال، تعليم النطق، تأخر الكلام عند الأطفال، تعليم الحروف العربية، تعليم الأرقام للأطفال، تعليم الألوان، ألعاب أطفال بدون إنترنت، لعبة أطفال ٣ سنوات، لعبة أطفال ٤ سنوات، العاب تعليمية عربية، جزيرة الكلمات" name="keywords"/><meta content="جزيرة الكلمات: يلعب… يضحك… ويتعلّم الكلام!" property="og:title"/><meta content="جزيرة الكلمات لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد: ٥٠ لعبة في ١٥ جزيرة يتعلّم فيها طفلك الكلام والنطق والحروف والأرقام والألوان وهو يلعب. للأطفال من ٣ إلى ٦ سنوات، بلا إعلانات، وتعمل بلا إنترنت." property="og:description"/><meta content="https://kalimatisland.com/" property="og:url"/><meta content="ar_AR" property="og:locale"/><meta content="جزيرة الكلمات · Kalimat Island" property="og:site_name"/><link href="https://kalimatisland.com/" rel="canonical"/><link href="https://kalimatisland.com/" hreflang="ar" rel="alternate"/><link href="https://kalimatisland.com/en/" hreflang="en" rel="alternate"/><link href="https://kalimatisland.com/" hreflang="x-default" rel="alternate"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MobileApplication","@id":"https://kalimatisland.com/#app","name":"جزيرة الكلمات","alternateName":["Kalimat Island","جزيرة الكلمات","Kalimat Island: Arabic Words"],"description":"جزيرة الكلمات لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد: ٥٠ لعبة في ١٥ جزيرة يتعلّم فيها طفلك الكلام والنطق والحروف والأرقام والألوان وهو يلعب. للأطفال من ٣ إلى ٦ سنوات، بلا إعلانات، وتعمل بلا إنترنت.","url":"https://kalimatisland.com/","image":"https://kalimatisland.com/a/og.jpg","screenshot":["https://kalimatisland.com/a/shot_ar_1.webp","https://kalimatisland.com/a/shot_ar_2.webp","https://kalimatisland.com/a/shot_ar_3.webp","https://kalimatisland.com/a/shot_ar_4.webp","https://kalimatisland.com/a/shot_ar_5.webp","https://kalimatisland.com/a/shot_ar_6.webp","https://kalimatisland.com/a/shot_ar_7.webp","https://kalimatisland.com/a/shot_ar_8.webp"],"operatingSystem":"iOS, iPadOS, Android","applicationCategory":"EducationalApplication","applicationSubCategory":"Kids learning game","inLanguage":["ar","en"],"contentRating":"4+","isFamilyFriendly":true,"audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":6},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","category":"free with a one-time in-app purchase"},"downloadUrl":["https://apps.apple.com/app/id6816729943","https://play.google.com/store/apps/details?id=com.nexera.kalimatisland"],"installUrl":["https://apps.apple.com/app/id6816729943","https://play.google.com/store/apps/details?id=com.nexera.kalimatisland"],"publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"Organization","@id":"https://kalimatisland.com/#org","name":"Kalimat Island","alternateName":"جزيرة الكلمات","url":"https://kalimatisland.com/","logo":"https://kalimatisland.com/a/logo.png","email":"xfanezz.developer@gmail.com","sameAs":["https://apps.apple.com/app/id6816729943","https://play.google.com/store/apps/details?id=com.nexera.kalimatisland","https://www.tiktok.com/@babbleisland","https://www.youtube.com/@kalimatisland"]},{"@type":"WebSite","@id":"https://kalimatisland.com/#site","name":"جزيرة الكلمات · Kalimat Island","url":"https://kalimatisland.com/","inLanguage":"ar","publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"FAQPage","@id":"https://kalimatisland.com/#faq","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"ما هي لعبة جزيرة الكلمات؟","acceptedAnswer":{"@type":"Answer","text":"لعبة أطفال تعليمية ثلاثية الأبعاد للآيفون والآيباد، فيها ٥٠ لعبة في ١٥ جزيرة. يبحث الطفل عن الكلمة ثم ينطقها بصوته، فيتعلّم قرابة ٤٠٠ كلمة من حياته اليومية، وكل الحروف العربية والأرقام، وهو يلعب."}},{"@type":"Question","name":"لأي عمر تناسب اللعبة؟","acceptedAnswer":{"@type":"Answer","text":"صُمّمت للأطفال من ٣ إلى ٦ سنوات، بمستويات قصيرة تناسب انتباه الطفل الصغير، وتتكيّف الصعوبة مع مستوى طفلك."}},{"@type":"Question","name":"هل تساعد اللعبة الطفل على الكلام والنطق؟","acceptedAnswer":{"@type":"Answer","text":"في كل مستوى يُطلب من الطفل أن يقول الكلمة بصوته، والتعرّف على الكلام يتمّ على الجهاز نفسه. تشجّع اللعبة الطفل على النطق بالتكرار والمرح، ويسمع الوالدان تسجيلاته في ركن الوالدين. وهي لعبة تعليمية، وليست بديلاً عن أخصائي التخاطب."}},{"@type":"Question","name":"هل جزيرة الكلمات مجانية؟","acceptedAnswer":{"@type":"Answer","text":"التحميل مجاني والجزيرة الأولى مجانية. وتفتح كل الجزر بشراء واحد لمرة واحدة، بلا اشتراك شهري."}},{"@type":"Question","name":"هل تعمل اللعبة بدون إنترنت؟","acceptedAnswer":{"@type":"Answer","text":"نعم، تعمل بالكامل بدون إنترنت بعد التحميل، فتناسب السيارة والطائرة. ولا يُحتاج الإنترنت إلا للشراء."}},{"@type":"Question","name":"هل في اللعبة إعلانات؟","acceptedAnswer":{"@type":"Answer","text":"لا، لا توجد أي إعلانات، ولا نجمع أي بيانات عن طفلك."}},{"@type":"Question","name":"هل اللغة فصحى أم لهجة؟","acceptedAnswer":{"@type":"Answer","text":"الفصحى: رانيا تتكلّم بالعربية الفصحى، بنطق سليم وواضح يفهمه كل طفل عربي."}},{"@type":"Question","name":"هل اللعبة متوفرة على أندرويد؟","acceptedAnswer":{"@type":"Answer","text":"نعم! متوفرة على الآيفون والآيباد من App Store، وعلى أجهزة أندرويد من Google Play."}}]}]}</script><script>(function(d){var u="https://stats.naqla.net/s.js";for(var i=0;i<d.scripts.length;i++)if(d.scripts[i].src==u)return;var s=d.createElement("script");s.src=u;s.setAttribute("data-website-id","d943244c-76b1-44ad-a071-edc61ceb66a0");d.head.appendChild(s)})(document)</script></head>
 <body>
 <div class="bar" id="bar">
 <a class="mini" href="#top"><img alt="" src="a/icon.webp"/><span>جزيرة الكلمات</span></a>
@@ -334,7 +349,7 @@
 
 </h1>
 <div class="en-name"><span>Kalimat Island</span></div>
-<div class="tagline"><span>يلعب… يضحك… ويتعلّم الكلام!</span></div>
+<div class="tagline"><span>يلعب… يضحك… ويتكلّم!</span></div>
 <p class="lead">
 <span>لعبة ثلاثية الأبعاد يبني فيها طفلك بطلاً يشبهه، ويبحر من جزيرة إلى جزيرة، ويقول كلماته الأولى بالعربية… واللعبة تسمعه!</span>
 
@@ -344,10 +359,7 @@
 <img alt="حمّلها من App Store" src="a/appstore_ar.svg"/>
 
 </a>
-<div aria-label="Google Play" class="soon">
-<svg aria-hidden="true" viewbox="0 0 48 48"><path d="M7 4.5 26.6 24 7 43.5c-.6-.3-1-1-1-1.8V6.3c0-.8.4-1.5 1-1.8z" fill="#34a853"></path><path d="m33.3 30.7-6.7-6.7 6.7-6.7 7.6 4.3c2 1.2 2 3.6 0 4.8z" fill="#fbbc04"></path><path d="M26.6 24 7 43.5c.5.3 1.2.3 1.9-.1l24.4-12.7z" fill="#ea4335"></path><path d="M26.6 24 33.3 17.3 8.9 4.6C8.2 4.2 7.5 4.2 7 4.5z" fill="#4285f4"></path></svg>
-<span><span><b>قريباً</b>على Google Play</span></span>
-</div>
+<a class="appstore googleplay" href="https://play.google.com/store/apps/details?id=com.nexera.kalimatisland" rel="noopener"><img alt="احصل عليه من Google Play" src="a/googleplay_ar.png"/></a>
 </div>
 <div class="pills">
 <span class="pill"><i>٥٠</i> لعبة</span>
@@ -369,6 +381,27 @@
 <div aria-hidden="true" class="sea"></div>
 </header>
 <main>
+<!-- two islands: Arabic and English -->
+<section id="two">
+<div class="wrap">
+<h2 class="two-title"><span class="chunky" data-text="جزيرتان… لغتان!">جزيرتان… لغتان!</span></h2>
+<p class="lead"><span>نفس المتعة ونفس الألعاب الخمسين: اختر اللغة التي يلعب بها طفلك.</span></p>
+<div class="twins">
+<a class="twin" href="https://apps.apple.com/app/id6816729943" rel="noopener">
+<img alt="" height="112" src="a/icon.webp" width="112"/>
+<h3><span>جزيرة الكلمات<small>Kalimat Island</small></span></h3>
+<p><span>يلعب ويتكلّم <b>بالعربية</b>: الكلام والنطق والحروف والأرقام</span></p>
+<span class="pill"><span>حمّلها من App Store</span></span>
+</a>
+<div class="twin babble">
+<img alt="" height="112" src="a/babble-icon.webp" width="112"/>
+<h3>Babble Island<small><span>جزيرة الإنجليزي</span></small></h3>
+<p><span>يتعلّم <b>الإنجليزية</b>: أول ٤٠٠ كلمة وحروف ABC</span></p>
+<span class="pill"><span>قريبًا على App Store</span></span>
+</div>
+</div>
+</div>
+</section>
 <!-- watch it -->
 <section class="sea-bg" id="watch">
 <div class="wrap watch">
@@ -402,7 +435,7 @@
 <div class="cards">
 <article class="card c-blue reveal"><img alt="" class="pic" src="a/ball.webp"/>
 <h3><span>٥٠ لعبة ثلاثية الأبعاد</span></h3>
-<p><span>سباق، كرة سلة، صيد سمك، بيتزا، غوص، صاروخ… وكل لعبة تعلّم كلمات جديدة.</span></p></article>
+<p><span>سباق، كرة سلة، صيد سمك، بيتزا، غوص، صاروخ… وفي كل لعبة كلمات جديدة يقولها.</span></p></article>
 <article class="card c-pink reveal"><img alt="" class="pic" src="a/girl_point_up.webp"/>
 <h3><span>بطل يشبهه تماماً</span></h3>
 <p><span>ولد أو بنت، لون البشرة والشعر والوجه، وخزانة كاملة يشتري منها بالعملات التي يجمعها.</span></p></article>
@@ -413,8 +446,8 @@
 <h3><span>ركن الوالدين</span></h3>
 <p><span>اسمع تسجيلات صوته لكل كلمة، وتابع تقدّمه يوماً بيوم وجزيرة بجزيرة.</span></p></article>
 <article class="card c-coral reveal"><img alt="" class="pic" src="a/bubble.webp"/>
-<h3><span>فصحى أو سعودي</span></h3>
-<p><span>صوت رانيا بالعربية الفصحى، أو باللهجة السعودية كما في البيت. أنتم تختارون.</span></p></article>
+<h3><span>بالعربية الفصحى</span></h3>
+<p><span>صوت رانيا بالفصحى: نطق سليم وواضح، بلغة يفهمها كل طفل عربي.</span></p></article>
 <article class="card c-sky reveal"><img alt="" class="pic" src="a/trophy.webp"/>
 <h3><span>نجوم وأوسمة وطريق الأبطال</span></h3>
 <p><span>ألبوم ملصقات يمتلئ، وأوسمة لكل إنجاز، وطريق ذهبي لكل جزيرة يكملها.</span></p></article>
@@ -426,7 +459,7 @@
 <section id="islands" style="background:linear-gradient(180deg,#c4ecff,#a9e2ff)">
 <div class="wrap">
 <div class="head reveal">
-<h2><span class="chunky" data-text="١٥ جزيرة… ماذا يتعلّم طفلك؟">١٥ جزيرة… ماذا يتعلّم طفلك؟</span></h2>
+<h2><span class="chunky" data-text="١٥ جزيرة… وش يقول فيها طفلك؟">١٥ جزيرة… وش يقول فيها طفلك؟</span></h2>
 <p><span>جزيرة لكل موضوع، مرتّبة من الأسهل إلى الأصعب: الأرقام والألوان والحروف أولاً، ثم الحيوانات والأكل والمواصلات، وصولاً إلى الأفعال والمشاعر والأشكال.</span></p>
 </div>
 <div class="isles">
@@ -566,11 +599,11 @@
 </details>
 <details class="qa reveal">
 <summary><span>هل اللغة فصحى أم لهجة؟</span></summary>
-<p><span>يختار الوالدان صوت رانيا: العربية الفصحى، أو اللهجة السعودية كما يتكلّمها الطفل في البيت.</span></p>
+<p><span>الفصحى: رانيا تتكلّم بالعربية الفصحى، بنطق سليم وواضح يفهمه كل طفل عربي.</span></p>
 </details>
 <details class="qa reveal">
 <summary><span>هل اللعبة متوفرة على أندرويد؟</span></summary>
-<p><span>متوفرة الآن على الآيفون والآيباد من App Store، ونسخة أندرويد قادمة قريباً على Google Play.</span></p>
+<p><span>نعم! متوفرة على الآيفون والآيباد من App Store، وعلى أجهزة أندرويد من Google Play.</span></p>
 </details>
 </div>
 </div>
@@ -580,14 +613,13 @@
 <img alt="" class="kids2" src="a/kids_pair_wave.webp"/>
 <h2 style="margin:0 0 12px"><span class="chunky" data-text="حمّلها الآن!" style="font-size:clamp(52px,12vw,92px)">حمّلها الآن!</span></h2>
 <p class="lead"><span>الجزيرة الأولى مجانية، وتفتح كل الجزر بشراء واحد لمرة واحدة، بلا اشتراك.</span></p>
-<p class="android-note"><span>نسخة أندرويد قادمة قريباً على Google Play 💚</span></p>
+<p class="android-note"><span>متوفرة الآن على أندرويد من Google Play 💚</span></p>
 <div class="stores">
 <a class="appstore" href="https://apps.apple.com/us/app/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9-%D8%A7%D9%84%D9%83%D9%84%D9%85%D8%A7%D8%AA/id6816729943" rel="noopener">
 <img alt="حمّلها من App Store" src="a/appstore_ar.svg"/>
 
 </a>
-<div class="soon"><svg aria-hidden="true" viewbox="0 0 48 48"><path d="M7 4.5 26.6 24 7 43.5c-.6-.3-1-1-1-1.8V6.3c0-.8.4-1.5 1-1.8z" fill="#34a853"></path><path d="m33.3 30.7-6.7-6.7 6.7-6.7 7.6 4.3c2 1.2 2 3.6 0 4.8z" fill="#fbbc04"></path><path d="M26.6 24 7 43.5c.5.3 1.2.3 1.9-.1l24.4-12.7z" fill="#ea4335"></path><path d="M26.6 24 33.3 17.3 8.9 4.6C8.2 4.2 7.5 4.2 7 4.5z" fill="#4285f4"></path></svg>
-<span><span><b>قريباً</b>على Google Play</span></span></div>
+<a class="appstore googleplay" href="https://play.google.com/store/apps/details?id=com.nexera.kalimatisland" rel="noopener"><img alt="احصل عليه من Google Play" src="a/googleplay_ar.png"/></a>
 </div>
 <div class="qr"><img alt="QR" height="186" src="a/qr.png" width="186"/><p>امسح الرمز بكاميرا جوالك</p></div>
 </section>
@@ -614,7 +646,10 @@
   var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   var android = /Android/.test(ua);
   root.classList.add(ios ? "ios" : android ? "android" : "desktop");
-  if (android) document.body.classList.add("android");
+  if (android) {
+    document.body.classList.add("android");
+    document.querySelectorAll('a.twin[href="https://apps.apple.com/app/id6816729943"]').forEach(function (a) { a.href = "https://play.google.com/store/apps/details?id=com.nexera.kalimatisland"; });
+  }
   if (!ios && !android) document.body.classList.add("desktop");
 
   var bar = document.getElementById("bar");
@@ -646,6 +681,84 @@
   } else {
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
   }
+})();
+</script>
+<!-- TikTok's in-app browser refuses App Store links ("Action can't be completed"), so inside TikTok a tap on one
+     shows how to open the page in the browser instead. Everywhere else nothing changes. -->
+<style>
+  .tt-veil { position: fixed; inset: 0; z-index: 1000; background: rgba(28, 42, 82, .5); display: none; }
+  .tt-veil.on { display: block; }
+  .tt-point { position: fixed; top: 10px; right: 12px; display: flex; align-items: center; gap: 6px; padding: 8px 16px;
+    border-radius: 999px; background: var(--paper, #fff); color: var(--ink, #1c2a52); box-shadow: var(--shadow, 0 6px 20px rgba(0,0,0,.2));
+    font: 800 20px "Plex", system-ui, sans-serif; direction: ltr; }
+  .tt-point span { font-size: 22px; line-height: 1; }
+  .tt-sheet { position: fixed; left: 12px; right: 12px; bottom: 16px; max-width: 520px; margin: 0 auto; padding: 24px 20px 14px;
+    border-radius: var(--radius, 24px); background: var(--paper, #fff); color: var(--ink, #1c2a52); text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .28); font-family: "Plex", system-ui, sans-serif; }
+  .tt-sheet h3 { margin: 0 0 10px; font: 800 24px "Baloo", "Plex", sans-serif; line-height: 1.3; }
+  .tt-sheet p { margin: 0 0 18px; font-size: 17px; line-height: 1.7; color: var(--ink-soft, #4a5578); }
+  .tt-sheet b { color: var(--ink, #1c2a52); }
+  .tt-sheet button { display: block; width: 100%; border: 0; border-radius: 999px; padding: 14px 18px; cursor: pointer;
+    font: 700 17px "Plex", system-ui, sans-serif; }
+  .tt-copy { background: var(--ink, #1c2a52); color: #fff; margin-bottom: 6px; }
+  .tt-ok { background: transparent; color: var(--ink-soft, #4a5578); }
+</style>
+<script>
+(function () {
+  if (!/BytedanceWebview|musical_ly|trill_|TikTok/i.test(navigator.userAgent)) return;
+  var ar = document.documentElement.lang !== "en";
+  var store = "https://apps.apple.com/app/id6816729943";
+  var words = ar ? {
+    title: "افتح الصفحة في المتصفح",
+    body: "تيك توك لا يفتح متجر App Store. اضغط <b>•••</b> في الأعلى، ثم اختر <b>«فتح في المتصفح»</b>، واضغط زر App Store من هناك.",
+    copy: "انسخ رابط المتجر",
+    copied: "تم النسخ ✓ الصقه في Safari",
+    ok: "حسنًا"
+  } : {
+    title: "Open this page in your browser",
+    body: "TikTok doesn't open the App Store. Tap <b>•••</b> at the top, choose <b>“Open in browser”</b>, then tap the App Store button there.",
+    copy: "Copy the App Store link",
+    copied: "Copied ✓ Paste it in Safari",
+    ok: "OK"
+  };
+  var veil = null;
+  function copied(button) { button.textContent = words.copied; }
+  function copy(button) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(store).then(function () { copied(button); }, function () { fallback(button); });
+    } else fallback(button);
+  }
+  function fallback(button) {
+    var field = document.createElement("textarea");
+    field.value = store; field.setAttribute("readonly", ""); field.style.position = "fixed"; field.style.opacity = "0";
+    document.body.appendChild(field); field.select(); field.setSelectionRange(0, store.length);
+    try { if (document.execCommand("copy")) copied(button); } catch (e) {}
+    document.body.removeChild(field);
+  }
+  function show() {
+    if (!veil) {
+      veil = document.createElement("div");
+      veil.className = "tt-veil";
+      veil.setAttribute("dir", ar ? "rtl" : "ltr");
+      veil.innerHTML = '<div class="tt-point" aria-hidden="true">•••<span>↑</span></div>' +
+        '<div class="tt-sheet" role="dialog" aria-modal="true" aria-labelledby="tt-title">' +
+        '<h3 id="tt-title">' + words.title + '</h3><p>' + words.body + '</p>' +
+        '<button class="tt-copy" type="button">' + words.copy + '</button>' +
+        '<button class="tt-ok" type="button">' + words.ok + '</button></div>';
+      document.body.appendChild(veil);
+      veil.querySelector(".tt-copy").addEventListener("click", function () { copy(this); });
+      veil.querySelector(".tt-ok").addEventListener("click", function () { veil.classList.remove("on"); });
+      veil.addEventListener("click", function (e) { if (e.target === veil) veil.classList.remove("on"); });
+    }
+    veil.querySelector(".tt-copy").textContent = words.copy;
+    veil.classList.add("on");
+  }
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    if (!link) return;
+    e.preventDefault();
+    show();
+  }, true);
 })();
 </script>
 </body>

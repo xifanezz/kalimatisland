@@ -128,6 +128,7 @@
   .appstore { display: inline-block; transition: transform .2s ease; filter: drop-shadow(0 6px 0 rgba(28,42,82,.18)); }
   .appstore:hover { transform: translateY(-3px) scale(1.03); }
   .appstore img { height: 62px; width: auto; }
+.android .stores .googleplay { order: -1; }
   .soon {
     display: inline-flex; align-items: center; gap: 10px; height: 62px; padding: 0 18px; border-radius: 14px;
     background: rgba(255,255,255,.75); border: 2px dashed rgba(28,42,82,.28); color: var(--ink-soft);
@@ -314,8 +315,22 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
   }
+  /* the two islands: Arabic (Kalimat) and English (Babble) */
+  #two { padding: 56px 16px 64px; background: linear-gradient(180deg, #ffffff, var(--sky-low)); text-align: center; }
+  .two-title { margin: 0 0 10px; }
+  .twins { display: grid; gap: 22px; grid-template-columns: 1fr; max-width: 860px; margin: 26px auto 0; }
+  @media (min-width: 720px) { .twins { grid-template-columns: 1fr 1fr; } }
+  .twin { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 28px 22px 26px; border-radius: var(--radius);
+    background: var(--paper); box-shadow: var(--shadow); text-decoration: none; color: var(--ink); transition: transform .2s ease; }
+  a.twin:hover { transform: translateY(-4px); }
+  .twin img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 6px 0 rgba(28,42,82,.14); }
+  .twin h3 { margin: 6px 0 0; font: 800 clamp(26px, 5vw, 32px) "Baloo", "Plex", sans-serif; line-height: 1.2; }
+  .twin h3 small { display: block; font: 700 15px "Plex", sans-serif; color: var(--ink-soft); margin-top: 4px; }
+  .twin p { margin: 0; color: var(--ink-soft); font-size: 17px; }
+  .twin .pill { margin-top: 8px; padding: 10px 24px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 700; }
+  .twin.babble .pill { background: var(--coral); }
 </style>
-<meta content="Kalimat Island is a 3D educational game for iPhone and iPad: 50 games across 15 islands where kids aged 3 to 6 learn to say Arabic words, letters, numbers and colours while they play. No ads, and it works offline." name="description"/><meta content="Arabic learning game for kids, learn Arabic for kids, Arabic alphabet app, Arabic words for toddlers, kids speech game, educational games for kids, Arabic letters tracing, Kalimat Island" name="keywords"/><meta content="Kalimat Island: play, laugh… and learn to talk!" property="og:title"/><meta content="Kalimat Island is a 3D educational game for iPhone and iPad: 50 games across 15 islands where kids aged 3 to 6 learn to say Arabic words, letters, numbers and colours while they play. No ads, and it works offline." property="og:description"/><meta content="https://kalimatisland.com/en/" property="og:url"/><meta content="en_US" property="og:locale"/><meta content="جزيرة الكلمات · Kalimat Island" property="og:site_name"/><link href="https://kalimatisland.com/en/" rel="canonical"/><link href="https://kalimatisland.com/" hreflang="ar" rel="alternate"/><link href="https://kalimatisland.com/en/" hreflang="en" rel="alternate"/><link href="https://kalimatisland.com/" hreflang="x-default" rel="alternate"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MobileApplication","@id":"https://kalimatisland.com/#app","name":"Kalimat Island","alternateName":["Kalimat Island","جزيرة الكلمات","Kalimat Island: Arabic Words"],"description":"Kalimat Island is a 3D educational game for iPhone and iPad: 50 games across 15 islands where kids aged 3 to 6 learn to say Arabic words, letters, numbers and colours while they play. No ads, and it works offline.","url":"https://kalimatisland.com/en/","image":"https://kalimatisland.com/a/og.jpg","screenshot":["https://kalimatisland.com/a/shot_en_1.webp","https://kalimatisland.com/a/shot_en_2.webp","https://kalimatisland.com/a/shot_en_3.webp","https://kalimatisland.com/a/shot_en_4.webp","https://kalimatisland.com/a/shot_en_5.webp","https://kalimatisland.com/a/shot_en_6.webp","https://kalimatisland.com/a/shot_en_7.webp","https://kalimatisland.com/a/shot_en_8.webp"],"operatingSystem":"iOS, iPadOS","applicationCategory":"EducationalApplication","applicationSubCategory":"Kids learning game","inLanguage":["ar","en"],"contentRating":"4+","isFamilyFriendly":true,"audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":6},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","category":"free with a one-time in-app purchase"},"downloadUrl":"https://apps.apple.com/app/id6816729943","installUrl":"https://apps.apple.com/app/id6816729943","publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"Organization","@id":"https://kalimatisland.com/#org","name":"Kalimat Island","alternateName":"جزيرة الكلمات","url":"https://kalimatisland.com/","logo":"https://kalimatisland.com/a/logo.png","email":"xfanezz.developer@gmail.com","sameAs":["https://apps.apple.com/app/id6816729943","https://www.tiktok.com/@babbleisland","https://www.youtube.com/@kalimatisland"]},{"@type":"WebSite","@id":"https://kalimatisland.com/#site","name":"جزيرة الكلمات · Kalimat Island","url":"https://kalimatisland.com/","inLanguage":"en","publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"FAQPage","@id":"https://kalimatisland.com/en/#faq","inLanguage":"en","mainEntity":[{"@type":"Question","name":"What is Kalimat Island?","acceptedAnswer":{"@type":"Answer","text":"An educational 3D game for kids on iPhone and iPad, with 50 games across 15 islands. Your child finds each word, then says it aloud, learning almost 400 everyday Arabic words, every Arabic letter and the numbers while they play."}},{"@type":"Question","name":"What age is it for?","acceptedAnswer":{"@type":"Answer","text":"It is made for children aged 3 to 6, with short levels that suit a young child's attention, and the difficulty adapts to your child."}},{"@type":"Question","name":"Does it help my child talk?","acceptedAnswer":{"@type":"Answer","text":"In every level your child is asked to say the word aloud, and speech is recognised on the device itself. The game encourages talking through play and repetition, and parents can hear the recordings in the Parent Corner. It is a learning game, not a replacement for a speech therapist."}},{"@type":"Question","name":"Is Kalimat Island free?","acceptedAnswer":{"@type":"Answer","text":"The download and the first island are free. One single purchase opens every island, with no monthly subscription."}},{"@type":"Question","name":"Does it work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once downloaded it works fully offline, in the car or on a plane. The internet is only needed for the purchase."}},{"@type":"Question","name":"Are there any ads?","acceptedAnswer":{"@type":"Answer","text":"No. There are no ads at all, and we collect no data about your child."}},{"@type":"Question","name":"Fusha or dialect?","acceptedAnswer":{"@type":"Answer","text":"Parents choose Rania's voice: Modern Standard Arabic (Fusha), or the Saudi dialect spoken at home."}},{"@type":"Question","name":"Is it on Android?","acceptedAnswer":{"@type":"Answer","text":"It is available now on iPhone and iPad from the App Store, and the Android version is coming soon to Google Play."}}]}]}</script></head>
+<meta content="Kalimat Island is a 3D educational game for iPhone and iPad: 50 games across 15 islands where kids aged 3 to 6 learn to say Arabic words, letters, numbers and colours while they play. No ads, and it works offline." name="description"/><meta content="Arabic learning game for kids, learn Arabic for kids, Arabic alphabet app, Arabic words for toddlers, kids speech game, educational games for kids, Arabic letters tracing, Kalimat Island" name="keywords"/><meta content="Kalimat Island: play, laugh… and learn to talk!" property="og:title"/><meta content="Kalimat Island is a 3D educational game for iPhone and iPad: 50 games across 15 islands where kids aged 3 to 6 learn to say Arabic words, letters, numbers and colours while they play. No ads, and it works offline." property="og:description"/><meta content="https://kalimatisland.com/en/" property="og:url"/><meta content="en_US" property="og:locale"/><meta content="جزيرة الكلمات · Kalimat Island" property="og:site_name"/><link href="https://kalimatisland.com/en/" rel="canonical"/><link href="https://kalimatisland.com/" hreflang="ar" rel="alternate"/><link href="https://kalimatisland.com/en/" hreflang="en" rel="alternate"/><link href="https://kalimatisland.com/" hreflang="x-default" rel="alternate"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MobileApplication","@id":"https://kalimatisland.com/#app","name":"Kalimat Island","alternateName":["Kalimat Island","جزيرة الكلمات","Kalimat Island: Arabic Words"],"description":"Kalimat Island is a 3D educational game for iPhone and iPad: 50 games across 15 islands where kids aged 3 to 6 learn to say Arabic words, letters, numbers and colours while they play. No ads, and it works offline.","url":"https://kalimatisland.com/en/","image":"https://kalimatisland.com/a/og.jpg","screenshot":["https://kalimatisland.com/a/shot_en_1.webp","https://kalimatisland.com/a/shot_en_2.webp","https://kalimatisland.com/a/shot_en_3.webp","https://kalimatisland.com/a/shot_en_4.webp","https://kalimatisland.com/a/shot_en_5.webp","https://kalimatisland.com/a/shot_en_6.webp","https://kalimatisland.com/a/shot_en_7.webp","https://kalimatisland.com/a/shot_en_8.webp"],"operatingSystem":"iOS, iPadOS, Android","applicationCategory":"EducationalApplication","applicationSubCategory":"Kids learning game","inLanguage":["ar","en"],"contentRating":"4+","isFamilyFriendly":true,"audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":6},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","category":"free with a one-time in-app purchase"},"downloadUrl":["https://apps.apple.com/app/id6816729943","https://play.google.com/store/apps/details?id=com.nexera.kalimatisland"],"installUrl":["https://apps.apple.com/app/id6816729943","https://play.google.com/store/apps/details?id=com.nexera.kalimatisland"],"publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"Organization","@id":"https://kalimatisland.com/#org","name":"Kalimat Island","alternateName":"جزيرة الكلمات","url":"https://kalimatisland.com/","logo":"https://kalimatisland.com/a/logo.png","email":"xfanezz.developer@gmail.com","sameAs":["https://apps.apple.com/app/id6816729943","https://play.google.com/store/apps/details?id=com.nexera.kalimatisland","https://www.tiktok.com/@babbleisland","https://www.youtube.com/@kalimatisland"]},{"@type":"WebSite","@id":"https://kalimatisland.com/#site","name":"جزيرة الكلمات · Kalimat Island","url":"https://kalimatisland.com/","inLanguage":"en","publisher":{"@id":"https://kalimatisland.com/#org"}},{"@type":"FAQPage","@id":"https://kalimatisland.com/en/#faq","inLanguage":"en","mainEntity":[{"@type":"Question","name":"What is Kalimat Island?","acceptedAnswer":{"@type":"Answer","text":"An educational 3D game for kids on iPhone and iPad, with 50 games across 15 islands. Your child finds each word, then says it aloud, learning almost 400 everyday Arabic words, every Arabic letter and the numbers while they play."}},{"@type":"Question","name":"What age is it for?","acceptedAnswer":{"@type":"Answer","text":"It is made for children aged 3 to 6, with short levels that suit a young child's attention, and the difficulty adapts to your child."}},{"@type":"Question","name":"Does it help my child talk?","acceptedAnswer":{"@type":"Answer","text":"In every level your child is asked to say the word aloud, and speech is recognised on the device itself. The game encourages talking through play and repetition, and parents can hear the recordings in the Parent Corner. It is a learning game, not a replacement for a speech therapist."}},{"@type":"Question","name":"Is Kalimat Island free?","acceptedAnswer":{"@type":"Answer","text":"The download and the first island are free. One single purchase opens every island, with no monthly subscription."}},{"@type":"Question","name":"Does it work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once downloaded it works fully offline, in the car or on a plane. The internet is only needed for the purchase."}},{"@type":"Question","name":"Are there any ads?","acceptedAnswer":{"@type":"Answer","text":"No. There are no ads at all, and we collect no data about your child."}},{"@type":"Question","name":"Fusha or dialect?","acceptedAnswer":{"@type":"Answer","text":"Fusha: Rania speaks Modern Standard Arabic, clear and correct, understood by every Arabic-speaking child."}},{"@type":"Question","name":"Is it on Android?","acceptedAnswer":{"@type":"Answer","text":"Yes! It is on iPhone and iPad from the App Store, and on Android phones and tablets from Google Play."}}]}]}</script><script>(function(d){var u="https://stats.naqla.net/s.js";for(var i=0;i<d.scripts.length;i++)if(d.scripts[i].src==u)return;var s=d.createElement("script");s.src=u;s.setAttribute("data-website-id","d943244c-76b1-44ad-a071-edc61ceb66a0");d.head.appendChild(s)})(document)</script></head>
 <body>
 <div class="bar" id="bar">
 <a class="mini" href="#top"><img alt="" src="../a/icon.webp"/><span>Kalimat Island</span></a>
@@ -344,10 +359,7 @@
 
 <img alt="Download on the App Store" src="../a/appstore_en.svg"/>
 </a>
-<div aria-label="Google Play" class="soon">
-<svg aria-hidden="true" viewbox="0 0 48 48"><path d="M7 4.5 26.6 24 7 43.5c-.6-.3-1-1-1-1.8V6.3c0-.8.4-1.5 1-1.8z" fill="#34a853"></path><path d="m33.3 30.7-6.7-6.7 6.7-6.7 7.6 4.3c2 1.2 2 3.6 0 4.8z" fill="#fbbc04"></path><path d="M26.6 24 7 43.5c.5.3 1.2.3 1.9-.1l24.4-12.7z" fill="#ea4335"></path><path d="M26.6 24 33.3 17.3 8.9 4.6C8.2 4.2 7.5 4.2 7 4.5z" fill="#4285f4"></path></svg>
-<span><span><b>Coming soon</b>on Google Play</span></span>
-</div>
+<a class="appstore googleplay" href="https://play.google.com/store/apps/details?id=com.nexera.kalimatisland" rel="noopener"><img alt="Get it on Google Play" src="../a/googleplay_en.png"/></a>
 </div>
 <div class="pills">
 <span class="pill"><i>50</i> games</span>
@@ -369,6 +381,27 @@
 <div aria-hidden="true" class="sea"></div>
 </header>
 <main>
+<!-- two islands: Arabic and English -->
+<section id="two">
+<div class="wrap">
+<h2 class="two-title"><span class="chunky" data-text="Two islands, two languages!">Two islands, two languages!</span></h2>
+<p class="lead"><span>The same fun, the same 50 games: pick the language your child learns.</span></p>
+<div class="twins">
+<a class="twin" href="https://apps.apple.com/app/id6816729943" rel="noopener">
+<img alt="" height="112" src="../a/icon.webp" width="112"/>
+<h3><span>Kalimat Island<small>جزيرة الكلمات</small></span></h3>
+<p><span>Learn <b>Arabic</b>: words, speech, letters and numbers</span></p>
+<span class="pill"><span>Get it on the App Store</span></span>
+</a>
+<div class="twin babble">
+<img alt="" height="112" src="../a/babble-icon.webp" width="112"/>
+<h3>Babble Island<small><span>First Words in English</span></small></h3>
+<p><span>Learn <b>English</b>: 400 first words and the ABC</span></p>
+<span class="pill"><span>Coming soon to the App Store</span></span>
+</div>
+</div>
+</div>
+</section>
 <!-- watch it -->
 <section class="sea-bg" id="watch">
 <div class="wrap watch">
@@ -413,8 +446,8 @@
 <h3><span>The Parent Corner</span></h3>
 <p><span>Hear their recordings for every word, and follow their progress day by day, island by island.</span></p></article>
 <article class="card c-coral reveal"><img alt="" class="pic" src="../a/bubble.webp"/>
-<h3><span>Fusha or Saudi</span></h3>
-<p><span>Rania speaks Modern Standard Arabic, or the Saudi dialect of home. You choose.</span></p></article>
+<h3><span>Clear Fusha Arabic</span></h3>
+<p><span>Rania speaks Fusha, Modern Standard Arabic: clear, correct, and understood by every Arabic-speaking child.</span></p></article>
 <article class="card c-sky reveal"><img alt="" class="pic" src="../a/trophy.webp"/>
 <h3><span>Stars, badges and the Champion Path</span></h3>
 <p><span>A sticker album that fills up, badges for every step, and a golden path for every island finished.</span></p></article>
@@ -566,11 +599,11 @@
 </details>
 <details class="qa reveal">
 <summary><span>Fusha or dialect?</span></summary>
-<p><span>Parents choose Rania's voice: Modern Standard Arabic (Fusha), or the Saudi dialect spoken at home.</span></p>
+<p><span>Fusha: Rania speaks Modern Standard Arabic, clear and correct, understood by every Arabic-speaking child.</span></p>
 </details>
 <details class="qa reveal">
 <summary><span>Is it on Android?</span></summary>
-<p><span>It is available now on iPhone and iPad from the App Store, and the Android version is coming soon to Google Play.</span></p>
+<p><span>Yes! It is on iPhone and iPad from the App Store, and on Android phones and tablets from Google Play.</span></p>
 </details>
 </div>
 </div>
@@ -580,14 +613,13 @@
 <img alt="" class="kids2" src="../a/kids_pair_wave.webp"/>
 <h2 style="margin:0 0 12px"><span class="chunky" data-text="Get it now!" style="font-size:clamp(52px,12vw,92px)">Get it now!</span></h2>
 <p class="lead"><span>The first island is free. One single purchase opens every island, with no subscription.</span></p>
-<p class="android-note"><span>The Android version is coming soon to Google Play 💚</span></p>
+<p class="android-note"><span>Now on Android, on Google Play 💚</span></p>
 <div class="stores">
 <a class="appstore" href="https://apps.apple.com/us/app/%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9-%D8%A7%D9%84%D9%83%D9%84%D9%85%D8%A7%D8%AA/id6816729943" rel="noopener">
 
 <img alt="Download on the App Store" src="../a/appstore_en.svg"/>
 </a>
-<div class="soon"><svg aria-hidden="true" viewbox="0 0 48 48"><path d="M7 4.5 26.6 24 7 43.5c-.6-.3-1-1-1-1.8V6.3c0-.8.4-1.5 1-1.8z" fill="#34a853"></path><path d="m33.3 30.7-6.7-6.7 6.7-6.7 7.6 4.3c2 1.2 2 3.6 0 4.8z" fill="#fbbc04"></path><path d="M26.6 24 7 43.5c.5.3 1.2.3 1.9-.1l24.4-12.7z" fill="#ea4335"></path><path d="M26.6 24 33.3 17.3 8.9 4.6C8.2 4.2 7.5 4.2 7 4.5z" fill="#4285f4"></path></svg>
-<span><span><b>Coming soon</b>on Google Play</span></span></div>
+<a class="appstore googleplay" href="https://play.google.com/store/apps/details?id=com.nexera.kalimatisland" rel="noopener"><img alt="Get it on Google Play" src="../a/googleplay_en.png"/></a>
 </div>
 <div class="qr"><img alt="QR" height="186" src="../a/qr.png" width="186"/><p>Scan with your phone's camera</p></div>
 </section>
@@ -614,7 +646,10 @@
   var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   var android = /Android/.test(ua);
   root.classList.add(ios ? "ios" : android ? "android" : "desktop");
-  if (android) document.body.classList.add("android");
+  if (android) {
+    document.body.classList.add("android");
+    document.querySelectorAll('a.twin[href="https://apps.apple.com/app/id6816729943"]').forEach(function (a) { a.href = "https://play.google.com/store/apps/details?id=com.nexera.kalimatisland"; });
+  }
   if (!ios && !android) document.body.classList.add("desktop");
 
   var bar = document.getElementById("bar");
@@ -646,6 +681,84 @@
   } else {
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
   }
+})();
+</script>
+<!-- TikTok's in-app browser refuses App Store links ("Action can't be completed"), so inside TikTok a tap on one
+     shows how to open the page in the browser instead. Everywhere else nothing changes. -->
+<style>
+  .tt-veil { position: fixed; inset: 0; z-index: 1000; background: rgba(28, 42, 82, .5); display: none; }
+  .tt-veil.on { display: block; }
+  .tt-point { position: fixed; top: 10px; right: 12px; display: flex; align-items: center; gap: 6px; padding: 8px 16px;
+    border-radius: 999px; background: var(--paper, #fff); color: var(--ink, #1c2a52); box-shadow: var(--shadow, 0 6px 20px rgba(0,0,0,.2));
+    font: 800 20px "Plex", system-ui, sans-serif; direction: ltr; }
+  .tt-point span { font-size: 22px; line-height: 1; }
+  .tt-sheet { position: fixed; left: 12px; right: 12px; bottom: 16px; max-width: 520px; margin: 0 auto; padding: 24px 20px 14px;
+    border-radius: var(--radius, 24px); background: var(--paper, #fff); color: var(--ink, #1c2a52); text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .28); font-family: "Plex", system-ui, sans-serif; }
+  .tt-sheet h3 { margin: 0 0 10px; font: 800 24px "Baloo", "Plex", sans-serif; line-height: 1.3; }
+  .tt-sheet p { margin: 0 0 18px; font-size: 17px; line-height: 1.7; color: var(--ink-soft, #4a5578); }
+  .tt-sheet b { color: var(--ink, #1c2a52); }
+  .tt-sheet button { display: block; width: 100%; border: 0; border-radius: 999px; padding: 14px 18px; cursor: pointer;
+    font: 700 17px "Plex", system-ui, sans-serif; }
+  .tt-copy { background: var(--ink, #1c2a52); color: #fff; margin-bottom: 6px; }
+  .tt-ok { background: transparent; color: var(--ink-soft, #4a5578); }
+</style>
+<script>
+(function () {
+  if (!/BytedanceWebview|musical_ly|trill_|TikTok/i.test(navigator.userAgent)) return;
+  var ar = document.documentElement.lang !== "en";
+  var store = "https://apps.apple.com/app/id6816729943";
+  var words = ar ? {
+    title: "افتح الصفحة في المتصفح",
+    body: "تيك توك لا يفتح متجر App Store. اضغط <b>•••</b> في الأعلى، ثم اختر <b>«فتح في المتصفح»</b>، واضغط زر App Store من هناك.",
+    copy: "انسخ رابط المتجر",
+    copied: "تم النسخ ✓ الصقه في Safari",
+    ok: "حسنًا"
+  } : {
+    title: "Open this page in your browser",
+    body: "TikTok doesn't open the App Store. Tap <b>•••</b> at the top, choose <b>“Open in browser”</b>, then tap the App Store button there.",
+    copy: "Copy the App Store link",
+    copied: "Copied ✓ Paste it in Safari",
+    ok: "OK"
+  };
+  var veil = null;
+  function copied(button) { button.textContent = words.copied; }
+  function copy(button) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(store).then(function () { copied(button); }, function () { fallback(button); });
+    } else fallback(button);
+  }
+  function fallback(button) {
+    var field = document.createElement("textarea");
+    field.value = store; field.setAttribute("readonly", ""); field.style.position = "fixed"; field.style.opacity = "0";
+    document.body.appendChild(field); field.select(); field.setSelectionRange(0, store.length);
+    try { if (document.execCommand("copy")) copied(button); } catch (e) {}
+    document.body.removeChild(field);
+  }
+  function show() {
+    if (!veil) {
+      veil = document.createElement("div");
+      veil.className = "tt-veil";
+      veil.setAttribute("dir", ar ? "rtl" : "ltr");
+      veil.innerHTML = '<div class="tt-point" aria-hidden="true">•••<span>↑</span></div>' +
+        '<div class="tt-sheet" role="dialog" aria-modal="true" aria-labelledby="tt-title">' +
+        '<h3 id="tt-title">' + words.title + '</h3><p>' + words.body + '</p>' +
+        '<button class="tt-copy" type="button">' + words.copy + '</button>' +
+        '<button class="tt-ok" type="button">' + words.ok + '</button></div>';
+      document.body.appendChild(veil);
+      veil.querySelector(".tt-copy").addEventListener("click", function () { copy(this); });
+      veil.querySelector(".tt-ok").addEventListener("click", function () { veil.classList.remove("on"); });
+      veil.addEventListener("click", function (e) { if (e.target === veil) veil.classList.remove("on"); });
+    }
+    veil.querySelector(".tt-copy").textContent = words.copy;
+    veil.classList.add("on");
+  }
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    if (!link) return;
+    e.preventDefault();
+    show();
+  }, true);
 })();
 </script>
 </body>
