@@ -394,12 +394,12 @@
 <p><span>Learn <b>Arabic</b>: words, speech, letters and numbers</span></p>
 <span class="pill"><span>Get it on the App Store</span></span>
 </a>
-<a class="twin babble" href="https://play.google.com/store/apps/details?id=com.nexera.babbleisland" rel="noopener">
+<a class="twin babble" href="https://apps.apple.com/app/id6829047749" rel="noopener">
 <img alt="" height="112" src="../a/babble-icon.webp" width="112"/>
 <h3>ABC Island<small><span>Kids English Games</span></small></h3>
 <p><span>Learn <b>English</b>: 400 first words and the ABC</span></p>
-<span class="pill"><span>Get it on Google Play</span></span>
-<small class="twin-soon"><span>Coming soon to the App Store</span></small>
+<span class="pill"><span>Get it on the App Store</span></span>
+<small class="twin-soon"><span>Also on Google Play</span></small>
 </a>
 </div>
 </div>
@@ -651,6 +651,11 @@
   if (android) {
     document.body.classList.add("android");
     document.querySelectorAll('a.twin[href="https://apps.apple.com/app/id6816729943"]').forEach(function (a) { a.href = "https://play.google.com/store/apps/details?id=com.nexera.kalimatisland"; });
+    document.querySelectorAll('a.twin[href="https://apps.apple.com/app/id6829047749"]').forEach(function (a) {
+      a.href = "https://play.google.com/store/apps/details?id=com.nexera.babbleisland";
+      var p = a.querySelector(".pill span"); if (p) p.textContent = document.documentElement.lang === "ar" ? "حمّلها من Google Play" : "Get it on Google Play";
+      var s = a.querySelector(".twin-soon"); if (s) s.remove();
+    });
   }
   if (!ios && !android) document.body.classList.add("desktop");
 
